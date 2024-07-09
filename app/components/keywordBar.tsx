@@ -1,21 +1,24 @@
 
 
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
-
-interface Options {
+export interface Option {
     id : number,
     name : string
 }
 
-export function KeywordBar({options} : {options : Array<Options >}): React.JSX.Element {
-  // note: the id field is mandatory
-  const handleOnSearch = (string, results) => {
-    console.log(string, results)
-  }
 
-  const formatResult = (item : Options) => {
+interface Props {
+    options : Array<Option>
+    keywords: string[]; // Add the 'keywords' property
+    setKeywords: Dispatch<SetStateAction<string[]>>;
+}
+
+
+export function KeywordBar({options, keywords, setKeywords } : Props): React.JSX.Element {
+  // note: the id field is mandatory
+  const formatResult = (item : Option) => {
     return (
       <>
         <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
@@ -23,13 +26,17 @@ export function KeywordBar({options} : {options : Array<Options >}): React.JSX.E
     )
   }
 
-  console.log(options)
+  const handleSelect = () => (item : Option) => {
+    const temp = keywords
+    temp.push(item.name)
+    setKeywords(temp)
+  }
 
   return (
     <div className='w-full'>
         <ReactSearchAutocomplete
         items={options}
-        onSearch={handleOnSearch}
+        onSelect={handleSelect()}
         autoFocus
         formatResult={formatResult}
         />
