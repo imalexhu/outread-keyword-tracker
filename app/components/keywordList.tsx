@@ -15,7 +15,7 @@ export default function KeywordList({keywordData}: KeywordListProps): React.JSX.
   if(Object.keys(keywordData).length === 0 ) return <div> No Data </div>
   
   const length = keywordData[Object.keys(keywordData)[0]].length
-  const temp = ["keyword"]
+  const temp = ["Keyword"]
   for(let i = 0; i < length; i++){
     temp.push(month[i])
   }
@@ -24,13 +24,15 @@ export default function KeywordList({keywordData}: KeywordListProps): React.JSX.
 
   const rows = Object.keys(keywordData).map((key,_i) => {
     const keyword = keywordData[key]
-    const obj: {[key: string]: string} = {key: key}
+    const obj: {[key: string]: string} = {};
+    obj["Keyword"] = key
     for(let i = 0; i < length; i++){
       obj[month[i]] = keyword[i].toString()
     }
     return obj
   })
 
+  console.log(columns)
   console.log(rows)
 
   return (
@@ -39,11 +41,13 @@ export default function KeywordList({keywordData}: KeywordListProps): React.JSX.
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
       <TableBody items={rows}>
-        {(item) => (
-          <TableRow key={item.key} className={classNames("text-black")}>
+        {(item) => { console.log(rows) 
+        return (
+          <TableRow key={item.key || 0 } className={classNames("text-black")}>
             {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
           </TableRow>
         )}
+      }
       </TableBody>
     </Table>
   );
