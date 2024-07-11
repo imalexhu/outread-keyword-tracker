@@ -13,10 +13,11 @@ interface Props {
     options : Array<Option>
     keywords: string[]; // Add the 'keywords' property
     setKeywords: Dispatch<SetStateAction<string[]>>;
+    setOptions: Dispatch<SetStateAction<Array<Option>>>;
 }
 
 
-export function KeywordBar({options, keywords, setKeywords } : Props): React.JSX.Element {
+export function KeywordBar({options, keywords, setKeywords,setOptions} : Props): React.JSX.Element {
   // note: the id field is mandatory
   const formatResult = (item : Option) => {
     return (
@@ -30,6 +31,7 @@ export function KeywordBar({options, keywords, setKeywords } : Props): React.JSX
     const temp = keywords
     temp.push(item.name)
     setKeywords(temp)
+    setOptions(options.filter((option) => option.name !== keywords[keywords.length - 1]))
   }
 
   return (

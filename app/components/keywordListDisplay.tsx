@@ -1,7 +1,21 @@
+import { IData } from "@/dummyData"
+
 interface KeywordListDisplayProps {
-  props
+  keywordData: IData | undefined
 }
 
-export function KeywordListDisplay(props: KeywordListDisplayProps): React.JSX.Element {
-  return <h1>KeywordListDisplay</h1>
+export function KeywordListDisplay({keywordData}: KeywordListDisplayProps): React.JSX.Element {
+
+    if(!keywordData) return <div> No Data </div>
+  return (
+    <div className="flex flex-col">
+        {
+            Object.keys(keywordData).map((key,i)=>(
+                <div key={i}>
+                    {key + " : " + keywordData[key].join(", ")}
+                </div>
+            ))
+        }
+    </div>
+  )
 }
