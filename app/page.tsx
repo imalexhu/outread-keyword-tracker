@@ -14,10 +14,13 @@ export default function Home() {
          Discover the exciting capabilities of keyword tracking with Outread
         </h1>
         <p className="mt-3 text-2xl text-gray-700">
-          Get started by editing{' '}
+          Get started by visiting{' '}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
+            <a href="/dashboard"
+            >
+              /dashboard          
+            </a>
+            </code>
         </p>
         <div className="mt-6 flex flex-wrap justify-center">
           <a
