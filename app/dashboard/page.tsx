@@ -1,4 +1,5 @@
 'use client'
+
 // Default page for the dashboard
 import {Graph} from '../components/graph';
 import KeywordList from '../components/keywordList';

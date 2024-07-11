@@ -1,3 +1,6 @@
+'use client'
+
+
 import { IData } from "@/dummyData"
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react";
 import classNames from "classnames";
