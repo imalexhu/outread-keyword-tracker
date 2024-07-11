@@ -36,7 +36,7 @@ export default function Dashboard() {
         <div className='flex flex-col items-start justify-start h-screen w-screen'>
             <div className="flex flex-row h-2/3 w-full">
                 <div className="flex items-center justify-center h-full w-3/4 bg-gray-500 ">
-                    <Graph props={undefined}/>
+                    <Graph keywordData={keywordData}/>
                 </div>
                 <div className='flex flex-col justify-start items-center h-1/8 w-1/4'>
                     <div className="flex flex-row w-full h-1/10">
