@@ -1,8 +1,8 @@
-'use client'
 
+import dynamic from 'next/dynamic';
 import { IData, colours } from "@/dummyData"
 import { ApexOptions } from "apexcharts";
-import ReactApexChart from "react-apexcharts";
+const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface GraphProps {
   keywordData : IData
